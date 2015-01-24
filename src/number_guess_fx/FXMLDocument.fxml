@@ -1,14 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="number_guess_fx.FXMLDocumentController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="320" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="number_guess_fx.FXMLDocumentController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+        <Button fx:id="quitBtn" layoutX="141.0" layoutY="161.0" onAction="#handleButtonAction" text="Quit" />
+      <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" text="Guess the number by clicking on checkboxes." />
+      <Label fx:id="guessLbl" layoutX="16.0" layoutY="131.0" prefHeight="30.0" prefWidth="289.0" />
+      <VBox fillWidth="false" layoutX="5.0" layoutY="30.0" prefHeight="111.0" prefWidth="314.0">
+         <children>
+            <HBox prefHeight="60.0" prefWidth="315.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" onAction="#handleCheckboxAction" text="1">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" onAction="#handleCheckboxAction" text="2">
+                     <padding>
+                        <Insets left="15.0" right="5.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" onAction="#handleCheckboxAction" text="3">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" onAction="#handleCheckboxAction" text="4">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" onAction="#handleCheckboxAction" text="5">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </CheckBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="56.0" prefWidth="315.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" onAction="#handleCheckboxAction" text="6">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" onAction="#handleCheckboxAction" text="7">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" onAction="#handleCheckboxAction" text="8">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" onAction="#handleCheckboxAction" text="9">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </CheckBox>
+                  <CheckBox mnemonicParsing="false" onAction="#handleCheckboxAction" prefHeight="13.0" prefWidth="64.0" text="10">
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                  </CheckBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>
