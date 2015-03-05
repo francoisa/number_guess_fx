@@ -11,10 +11,10 @@
 
 <AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="320" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="number_guess_fx.FXMLDocumentController">
     <children>
-        <Button fx:id="quitBtn" layoutX="141.0" layoutY="161.0" onAction="#handleButtonAction" text="Quit" />
+        <Button fx:id="quitBtn" layoutX="235.0" layoutY="161.0" onAction="#handleQuitAction" text="Quit" />
       <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" text="Guess the number by clicking on checkboxes." />
       <Label fx:id="guessLbl" layoutX="16.0" layoutY="131.0" prefHeight="30.0" prefWidth="289.0" />
-      <VBox fillWidth="false" layoutX="5.0" layoutY="30.0" prefHeight="111.0" prefWidth="314.0">
+      <VBox fx:id="cbContainer" fillWidth="false" layoutX="5.0" layoutY="30.0" prefHeight="111.0" prefWidth="314.0">
          <children>
             <HBox prefHeight="60.0" prefWidth="315.0">
                <children>
@@ -76,5 +76,7 @@
             </HBox>
          </children>
       </VBox>
+      <Button fx:id="restartBtn" layoutX="162.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleRestartAction" text="Restart" />
+      <CheckBox fx:id="audioCB" layoutX="27.0" layoutY="165.0" mnemonicParsing="false" text="Disable Sounds" />
     </children>
 </AnchorPane>
