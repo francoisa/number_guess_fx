@@ -5,19 +5,20 @@
  */
 package number_guess_fx;
 
+import java.io.File;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.Stack;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 
 /**
  *
@@ -30,6 +31,9 @@ public class FXMLDocumentController implements Initializable {
   
     @FXML
     private Button restartBtn;
+    
+    @FXML
+    private CheckBox audioCB;
     
     @FXML
     private VBox cbContainer;
@@ -56,6 +60,7 @@ public class FXMLDocumentController implements Initializable {
             cb.setSelected(false);
             cb.setDisable(false);
         }
+        if (!audioCB.isSelected()) beep.play();
     }
     
     @FXML
@@ -67,10 +72,12 @@ public class FXMLDocumentController implements Initializable {
         cbStack.push(cb);
         if (guess != answer) {
             guessLbl.setText(guess + " is not the number. " + ++num + " of " + tries);
+            if (bloop != null && !audioCB.isSelected()) bloop.play();
         }
         else {
             disableCheckboxes();
             restartBtn.setDisable(false);
+            if (!audioCB.isSelected()) beep.play();
             guessLbl.setText(guess + " is the number!");
         }
         if (num == tries) {
@@ -87,8 +94,19 @@ public class FXMLDocumentController implements Initializable {
     private void enableCheckboxes() {
         cbContainer.setDisable(false);
     }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            resource = new File("beep.wav").toURI().toURL();
+            URL bloopResource = new File("bloop.wav").toURI().toURL();
+            bloop = new AudioClip(bloopResource.toString());
+        }
+        catch (Exception e) {
+            System.err.println("Error creating URL for beep.wav " + e.getMessage());
+        }
+        beep = new AudioClip(resource.toString()); 
+        beep.play();
         cbStack = new Stack<>();
         restartBtn.setDisable(true);
         number();
@@ -99,4 +117,9 @@ public class FXMLDocumentController implements Initializable {
 	answer = Math.round(10*random.nextFloat()) + 1;
         num = 0;
     }
+    
+    private final String pwd = Paths.get(".").toAbsolutePath().toString();
+    private URL resource;
+    AudioClip bloop;
+    AudioClip beep;
 }
